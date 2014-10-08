@@ -1,0 +1,86 @@
+<?php
+require_once('phpmailer/class.phpmailer.php');
+if(!isset($_SERVER['REMOTE_ADDR'])){
+$to = $argv[1];
+$subject = $argv[2];
+$body = $argv[3];
+$provider = $argv[4];
+$from = $argv[5];
+$pass = $argv[6];
+
+if(isset($argv[7])){
+	$image = $argv[7];
+	$image_filename = $argv[8];
+}
+else{
+	$image = false;
+	$image_filename = false;
+}
+
+//gmail: php email.php "to@email.com" "subject" "text" "gmail" "from@email.com" "password" ["file"] ["filename"]
+//hotmail: php email.php "to@email.com" "subject" "text" "hotmail" "from@email.com" "password" ["file"] ["filename"]
+//local: php email.php "to@email.com" "subject" "text" "hotmail" "from@email.com" "password" ["file"] ["filename"] "smtp.server.com"
+//ext: php email.php "to@email.com" "subject" "text" "hotmail" "from@email.com" "password" ["file"] ["filename"] "smtp.server.com" "25" "tls"
+global $error;
+$mail = new PHPMailer();  // create a new object
+$mail->CharSet = "UTF-8";
+$mail->IsSMTP(); // enable SMTP
+$mail->SMTPDebug = 0;  // debugging: 1 = errors and messages, 2 = messages only
+echo "provider: ".$provider."\n";
+if($provider == "ext" || $provider == "local"){
+	$smtp = $argv[9]; 
+	$mail->Host = $smtp;
+}
+
+if($provider == "ext"){
+	$port = $argv[10];
+	$protocol = $argv[11];
+	$mail->Port = $port;
+	$mail->SMTPSecure = $protocol; //SSL/TLS
+}
+
+if ($provider != "local"){
+	$mail->SMTPAuth = true;  // authentication enabled
+	$mail->Username = $from;  
+	$mail->Password = $pass;           
+}
+
+if ($provider == "hotmail"){
+	$mail->SMTPAuth = false;
+	$mail->Port = 25;
+	$mail->Host = "localhost";
+}
+
+
+if($provider == "gmail"){
+	$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for GMail
+	$mail->Port = 465; 
+	$mail->Host = 'smtp.gmail.com';
+}
+if (isset($port)){echo "PORT:".$port."\n";}
+if (isset($smtp)){echo "SMTP:".$smtp."\n"; }
+
+echo "FROM: ".$from."\n";
+$mail->SetFrom($from);
+$mail->Subject = $subject;
+$mail->Body = $body;
+echo "TO: ".$to."\n";
+$mail->AddAddress($to);
+
+if($image){
+	if(file_exists($image)){
+	echo "file:".$image."\n";
+	$mail->AddEmbeddedImage($image,"Photo",$subject);
+	}
+}
+if(!$mail->Send()) {
+	$error = 'Mail error: '.$mail->ErrorInfo; 
+	return false;
+} else {
+	$error = 'Message sent!';
+	return true;
+}
+echo "Subject:".$subject."\n";
+echo "MESSAGE:".$body."\n";
+}
+?>

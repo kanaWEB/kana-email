@@ -1,0 +1,18 @@
+<?php
+$data[] = [
+			"text" => "gmail",
+			"value" => "gmail"
+			];
+$data[] = [
+			"text" => "hotmail/outlook",
+			"value" => "hotmail"
+			];
+$data[] = [
+			"text" => "isp provider",
+			"value" => "local"
+			];
+$data[] = [
+			"text" => "other provider",
+			"value" => "ext"
+			];
+?>
