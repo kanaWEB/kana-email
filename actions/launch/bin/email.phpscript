@@ -8,14 +8,16 @@ $provider = $argv[4];
 $from = $argv[5];
 $pass = $argv[6];
 
-if(isset($argv[7])){
-	$image = $argv[7];
-	$image_filename = $argv[8];
-}
-else{
-	$image = false;
-	$image_filename = false;
-}
+var_dump($argv);
+
+#if(isset($argv[7])){
+#	$image = $argv[7];
+#	$image_filename = $argv[8];
+#}
+#else{
+#	$image = false;
+#	$image_filename = false;
+#}
 
 //gmail: php email.php "to@email.com" "subject" "text" "gmail" "from@email.com" "password" ["file"] ["filename"]
 //hotmail: php email.php "to@email.com" "subject" "text" "hotmail" "from@email.com" "password" ["file"] ["filename"]
@@ -28,13 +30,21 @@ $mail->IsSMTP(); // enable SMTP
 $mail->SMTPDebug = 0;  // debugging: 1 = errors and messages, 2 = messages only
 echo "provider: ".$provider."\n";
 if($provider == "ext" || $provider == "local"){
-	$smtp = $argv[9]; 
+	$smtp = $argv[7]; 
+
+	if($smtp == ""){
+	$smtp = $argv[6];
+	$pass = "";
+	}
+
 	$mail->Host = $smtp;
+
+
 }
 
 if($provider == "ext"){
-	$port = $argv[10];
-	$protocol = $argv[11];
+	$port = $argv[8];
+	$protocol = $argv[9];
 	$mail->Port = $port;
 	$mail->SMTPSecure = $protocol; //SSL/TLS
 }
@@ -46,9 +56,9 @@ if ($provider != "local"){
 }
 
 if ($provider == "hotmail"){
-	$mail->SMTPAuth = false;
-	$mail->Port = 25;
-	$mail->Host = "localhost";
+	$mail->SMTPSecure = 'tls';
+	$mail->Port = 587;
+	$mail->Host = "smtp-mail.outlook.com";
 }
 
 
@@ -67,12 +77,14 @@ $mail->Body = $body;
 echo "TO: ".$to."\n";
 $mail->AddAddress($to);
 
+/*
 if($image){
 	if(file_exists($image)){
 	echo "file:".$image."\n";
 	$mail->AddEmbeddedImage($image,"Photo",$subject);
 	}
 }
+*/
 if(!$mail->Send()) {
 	$error = 'Mail error: '.$mail->ErrorInfo; 
 	return false;
