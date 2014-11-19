@@ -1,7 +1,0 @@
-//Email Object 1.0
-provider:text
-from:text
-password:text
-smtp:text
-port:int
-protocol:text
