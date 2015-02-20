@@ -1,0 +1,37 @@
+{
+  "default": {
+    "command": "emailer.sh",
+    "usage" : "emailer.sh to subject body provider from [password] [smtp] [port] [protocol]",
+    "args": {
+      "to": {
+      	"type": "Actions"
+      },
+      "subject": {
+        "type": "Actions",
+        "modifier": "Data"
+      },
+      "body": {
+        "type": "Actions",
+        "modifier": "Data"
+      },
+      "provider": {
+        "type": "Config"
+      },
+      "from": {
+        "type": "Config"
+      },
+      "password": {
+        "type": "Config"
+      },
+      "smtp": {
+        "type": "Config"
+      },
+      "port": {
+        "type": "Config"
+      },
+      "protocol": {
+        "type": "Config"
+      }
+    }
+  }
+}

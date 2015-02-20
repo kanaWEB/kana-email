@@ -1,1 +1,0 @@
-bin/emailer.sh [to] [%subject] [%body] [@provider] [@from] [@password] [@smtp] [@port] [@protocol]
