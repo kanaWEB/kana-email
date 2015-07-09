@@ -1,11 +1,8 @@
 <?php
-	$pid = Functions::is_running("emailer.sh");
-	var_dump($pid);
-	if(empty($pid[0])){
-		echo "no process";
-	}
-	else
-	{
-		echo "process";
-	}
-?>
+$pid = Functions::isRunning("emailer.sh");
+var_dump($pid);
+if (empty($pid[0])) {
+    echo "no process";
+} else {
+    echo "process";
+}

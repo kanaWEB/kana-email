@@ -1,12 +1,12 @@
 {
    "description" : "Envoyer des notifications par email depuis hotmail/gmail/votre fai ou autre...",
    "name" : "Notifications Email",
-   "tags" : {
-      "email" : {},
-      "notification" : {},
-      "gmail" : {},
-      "outlook" : {},
-      "hotmail" : {}
-   },
+   "tags" : [
+      "email",
+      "notification",
+      "gmail",
+      "outlook",
+      "hotmail"
+   ],
    "type" : "notification"
 }

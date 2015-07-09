@@ -1,12 +1,12 @@
 {
    "description" : "Send email notification from hotmail/gmail/your isp and others...",
    "name" : "Email Notification",
-   "tags" : {
-      "email" : {},
-      "notification" : {},
-      "gmail" : {},
-      "outlook" : {},
-      "hotmail" : {}
-   },
+   "tags" : [
+      "email",
+      "notification",
+      "gmail",
+      "outlook",
+      "hotmail"
+   ],
    "type" : "notification"
 }
