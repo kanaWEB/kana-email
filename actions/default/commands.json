@@ -1,36 +1,27 @@
 {
   "default": {
-    "command": "emailer.sh",
+    "command": "/opt/piget/email/emailSend",
     "usage" : "emailer.sh to subject body provider from [password] [smtp] [port] [protocol]",
     "args": {
-      "to": {
-      	"type": "Actions"
-      },
-      "subject": {
+      "object_key": {
         "type": "Actions",
-        "modifier": "Data"
+        "modifier": "Prefix",
+        "prefix": "--Id"
       },
-      "body": {
+      "To": {
+      	"type": "Actions",
+        "modifier": "Prefix",
+        "prefix" : "--To"
+      },
+      "Subject": {
         "type": "Actions",
-        "modifier": "Data"
+        "modifier": "Prefix",
+        "prefix" : "--Subject"
       },
-      "provider": {
-        "type": "Config"
-      },
-      "from": {
-        "type": "Config"
-      },
-      "password": {
-        "type": "Config"
-      },
-      "smtp": {
-        "type": "Config"
-      },
-      "port": {
-        "type": "Config"
-      },
-      "protocol": {
-        "type": "Config"
+      "Body": {
+        "type": "Actions",
+        "modifier": "Prefix",
+        "prefix" : "--Body"
       }
     }
   }

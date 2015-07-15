@@ -1,0 +1,15 @@
+<?php
+unset($data);
+$data[] = [
+        "text" => "none",
+        "value" => ""
+        ];
+
+$data[] = [
+        "text" => "tls",
+        "value" => "tls"
+        ];
+$data[] = [
+        "text" => "ssl",
+        "value" => "ssl"
+        ];

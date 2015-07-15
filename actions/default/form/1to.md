@@ -1,3 +1,3 @@
 id            |name               |type              |placeholder        |required
 --------------|-------------------|------------------|-------------------|--------
-to            |Send email to      |text              |youremail@email.com|true
+To            |Send email to      |text              |youremail@email.com|true

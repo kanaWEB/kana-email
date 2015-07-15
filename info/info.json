@@ -8,5 +8,6 @@
       "outlook",
       "hotmail"
    ],
+   "json" : "Emails",
    "type" : "notification"
 }
