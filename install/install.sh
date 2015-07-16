@@ -1,2 +1,7 @@
 #!/bin/sh
-apt-get -f install php5-cli
+. /opt/piget/core/install/extendPath
+downloadModule email
+. extendPath
+emailInstall
+
+
