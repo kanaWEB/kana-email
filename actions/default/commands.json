@@ -1,7 +1,6 @@
 {
   "default": {
-    "command": "/opt/piget/email/emailSend",
-    "usage" : "emailer.sh to subject body provider from [password] [smtp] [port] [protocol]",
+    "command": "/do/email/send",
     "args": {
       "object_key": {
         "type": "Actions",
